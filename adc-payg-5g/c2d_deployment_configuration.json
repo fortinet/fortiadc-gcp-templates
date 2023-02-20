@@ -1,0 +1,7 @@
+{
+  "defaultDeploymentType": "SINGLE_VM",
+  "imageName": "fadc-620-payg-5gbps-07302021-001-w-license",
+  "projectId": "fortigcp-project-001",
+  "templateName": "nonexistent_template",
+  "useSolutionPackage": true
+}

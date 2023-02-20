@@ -1,0 +1,8 @@
+imports:
+- path: fortiadc-payg-1gbps.jinja
+
+resources:
+- name: fortiadc-payg-1gbps
+  type: fortiadc-payg-1gbps.jinja
+  properties:
+    zone: us-central1-f

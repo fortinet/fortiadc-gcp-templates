@@ -1,0 +1,7 @@
+{
+  "defaultDeploymentType": "SINGLE_VM",
+  "imageName": "yjson-fad-v601-payg-100mbps-new-11302020-001-w-license",
+  "projectId": "fortigcp-project-001",
+  "templateName": "nonexistent_template",
+  "useSolutionPackage": true
+}

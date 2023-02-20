@@ -1,0 +1,130 @@
+description:
+  author:
+    title: Fortinet Inc.
+    descriptionHtml: >-
+      Fortinet (NASDAQ: FTNT) secures the largest enterprise, service provider,
+      and government organizations around the world. Fortinet empowers its
+      customers with intelligent, seamless protection across the expanding
+      attack surface and the power to take on ever-increasing performance
+      requirements of the borderless network—today and into the future. Only the
+      Fortinet Security Fabric architecture can deliver security without
+      compromise to address the most critical security challenges, whether in
+      networked, application, cloud, or mobile environments. Fortinet ranks
+      number one in the most security appliances shipped worldwide and more than
+      500,000 customers trust Fortinet to protect their businesses.
+
+
+      Please contact us at gcpsales@fortinet.com for questions or assistance.
+    shortDescription: >-
+      Fortinet (NASDAQ: FTNT), headquartered in Sunnyvale, California, is a
+      worldwide vendor of network security products providing customers with
+      broad, integrated, and high-performance protection against dynamic
+      security threats while simplifying the IT security infrastructure.
+    url: 'https://www.fortinet.com'
+  descriptionHtml: "<p>Advanced application delivery and server load balancing for GCP. Resource management for hosted applications in physical, virtual, cloud and hybrid environments are critical for performance, reliability and response times. FortiADC optimizes the availability, user experience, and scalability of enterprise application delivery. It delivers fast, secure and intelligent acceleration for demanding application environments.</p>\n\n\t<p>FortiADC virtual machines offer the same features of the FortiADC hardware-based appliances and provide the flexibility to add or spin down system resources to match usage demands and help control costs in dynamic application environments. FortiADC for GCP provides an easy-to-deploy, easy-to-manage application delivery controller that can be provisioned quickly without additional hardware or data center operational impacts.</p>\n\n\t<p>For more information on FortiADC and to obtain the latest datasheet, please visit the links listed below.</p>\n\n\t<p><b>Highlights:</b></p>\n\t<ul>\n<li><b>All-inclusive - </b> FortiADC includes all the features you need including global server load balancing, SSL/TLS offloading, WAF, HTTP caching, L4/L7 policy-based routing, and scripting with no extra license fees or subscriptions</li>\n<p><li><b>Integration</b> - Only FortiADC offers an included antivirus engine that is integrated with Fortinet FortiSandbox platform for advanced threat detection. </li></p>\n<li><b>Security - </b> FortiADC is built from the ground up to be a secure application delivery platform with an included firewall, web application firewall, antivirus scanning and support for additional FortiGuard security services including IP Reputation and Web Filtering.</li></ul>"
+  logo: '@media/fortiadc-payg-5gbps_store.jpg'
+  tagline: 'Application load balancing, GSLB and Web Application Firewall'
+  title: Fortinet FortiADC Application Delivery Controller PAYG 5Gbps
+  url: >-
+    https://www.fortinet.com/products/application-delivery-controller/fortiadc.html
+  version: 7.0.0
+  eulaUrl: 'https://s3.amazonaws.com/EULA/Fortinet+Jan+2019+EULA.pdf'
+  documentations:
+    - title: Admin Guide of FortiADC 7.0
+      url: 'https://docs.fortinet.com/product/fortiadc/7.0'
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_POST_DEPLOY
+    - title: FortiADC - GCP deployment guide
+      url: >-
+        https://docs.fortinet.com/document/fortiadc-public-cloud/latest/gcp-deployment-guide
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_POST_DEPLOY
+  support:
+    - title: Support
+      descriptionHtml: >-
+        Fortinet FortiCare Support Services give you global support on a
+        per-product basis. By subscribing to these services, you'll receive a
+        timely response to any technical issue as well as complete visibility on
+        ticket resolution progress. All FortiCare Support Services include
+        firmware upgrades, access to the support portal and associated technical
+        resources. FortiGuard Security Services include up-to-the minute threat
+        intelligence delivered in real time to stop the latest threats.
+      url: 'https://www.fortinet.com/support-and-training/support/contact.html'
+  icon: '@media/fortiadc-payg-5gbps_small.jpg'
+  softwareGroups:
+    - type: SOFTWARE_GROUP_OS
+      software:
+        - title: Linux
+          version: 4.14.54
+input:
+  properties:
+    - name: zone
+      title: Zone
+    - name: machineType
+      title: Machine type
+    - name: bootDiskType
+      title: Boot disk type
+      section: BOOT_DISK
+    - name: bootDiskSizeGb
+      title: Boot disk size in GB
+      section: BOOT_DISK
+    - name: network
+      title: Network name
+      section: NETWORKING
+    - name: subnetwork
+      title: Subnetwork name
+      section: NETWORKING
+    - name: externalIP
+      title: External IP
+      tooltip: >-
+        An external IP address associated with this instance. Selecting "None"
+        will result in the instance having no external internet access. <a
+        href="https://cloud.google.com/compute/docs/configure-instance-ip-addresses">Learn
+        more</a>
+      section: NETWORKING
+  sections:
+    - name: BOOT_DISK
+      title: Boot Disk
+      tooltip: Each instance requires a disk to boot from.
+    - name: NETWORKING
+      title: Networking
+runtime:
+  deployingMessage: Deployment can take several minutes to complete.
+  applicationTable:
+    rows:
+      - label: Instance
+        value: >-
+          <a href="{{ consoleUrl(outputs().vmSelfLink) }}">{{ outputs().vmName
+          }}</a>
+      - label: Instance zone
+        value: '{{ properties().zone }}'
+      - label: Instance machine type
+        value: '{{ properties().machineType }}'
+  primaryButton:
+    label: SSH
+    type: TYPE_GCE_VM_SSH
+    action: '{{ outputs().vmSelfLink }}'
+  suggestedActions:
+    - heading: No external IP configured
+      description: >-
+        The VM instance has been configured with no external IP or internet
+        access. Connecting to it directly may not be possible. Consider using a
+        <a
+        href="https://cloud.google.com/compute/docs/instances/connecting-advanced#bastion_host">bastion
+        host</a> to access this VM.
+      showIf: '{{ !outputs().hasExternalIP }}'
+    - heading: Assign a static external IP address to your VM instance
+      description: >-
+        An ephemeral external IP address has been assigned to the VM instance.
+        If you require a static external IP address, you may promote the address
+        to static. <a
+        href="https://cloud.google.com/compute/docs/instances-and-network#promote_ephemeral_ip">Learn
+        more</a>
+      showIf: '{{ outputs().hasExternalIP }}'
+annotations:
+  autogenSpecType: SINGLE_VM
+  vmImage0: >-
+    https://www.googleapis.com/compute/v1/projects/fortigcp-project-001/global/images/fadc-620-payg-5gbps-07302021-001-w-license
+metadata_version: v1
