@@ -27,11 +27,11 @@ description:
   title: Fortinet FortiADC Application Delivery Controller PAYG 5Gbps
   url: >-
     https://www.fortinet.com/products/application-delivery-controller/fortiadc.html
-  version: 7.2.0
+  version: 7.4.0
   eulaUrl: 'https://s3.amazonaws.com/EULA/Fortinet+Jan+2019+EULA.pdf'
   documentations:
-    - title: Admin Guide of FortiADC 7.2
-      url: 'https://docs.fortinet.com/product/fortiadc/7.2'
+    - title: Admin Guide of FortiADC 7.4
+      url: 'https://docs.fortinet.com/product/fortiadc/7.4'
       destinations:
         - DESTINATION_SOLUTION_DETAILS
         - DESTINATION_POST_DEPLOY
