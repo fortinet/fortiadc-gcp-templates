@@ -27,7 +27,7 @@ description:
   title: Fortinet FortiADC Application Delivery Controller PAYG 1Gbps
   url: >-
     https://www.fortinet.com/products/application-delivery-controller/fortiadc.html
-  version: 7.4.2
+  version: 7.4.3
   eulaUrl: 'https://s3.amazonaws.com/EULA/Fortinet+Jan+2019+EULA.pdf'
   documentations:
     - title: Admin Guide of FortiADC 7.4
@@ -126,5 +126,5 @@ runtime:
 annotations:
   autogenSpecType: SINGLE_VM
   vmImage0: >-
-    https://www.googleapis.com/compute/v1/projects/fortigcp-project-001/global/images/fadc-742-payg-1gbps-02062024-327-w-license
+    https://www.googleapis.com/compute/v1/projects/fortigcp-project-001/global/images/fadc-743-payg-1gbps-03272024-336-w-license
 metadata_version: v1
